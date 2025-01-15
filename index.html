@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>中国传统颜色可视化 - by 古柳</title>
+    <title>Color Distribution</title>
     <style>
         @font-face {
             font-family: 'FangZhengQingKeBenYueSong';
@@ -165,52 +165,6 @@
                     return [x, 0, z];
                 })
                 .attr('colors', d => d.hex);
-
-            // https://spritejs.org/#/zh-cn/ext3d/text
-            const titleTexture = layer.createText('中国传统颜色可视化', {
-                font: '40px Arial',
-                fillColor: 'black',
-            });
-
-            // titleProgram 单独一个 program 
-            const titleProgram = layer.createProgram({
-                ...shaders.NORMAL_TEXTURE,
-                texture: titleTexture,
-                cullFace: null,
-            });
-            const title = new Plane(titleProgram, {
-                width: 15,
-                height: 15 * titleTexture.image.height / titleTexture.image.width,
-                colors: '#f90',
-                rotateY: '93',
-                x: -7,
-                z: 1,
-                y: 0.5
-            });
-
-            const authorTexture = layer.createText('by 古柳', {
-                font: '40px Arial',
-                fillColor: 'black',
-            });
-
-            const authorProgram = layer.createProgram({
-                ...shaders.NORMAL_TEXTURE,
-                texture: authorTexture,
-                cullFace: null,
-            });
-            const author = new Plane(authorProgram, {
-                width: 3,
-                height: 3 * authorTexture.image.height / authorTexture.image.width,
-                colors: '#f90',
-                rotateY: '93',
-                x: -4,
-                z: -2,
-                y: 0.5
-            });
-
-            //  text
-            layer.append(title);
-            layer.append(author);
 
             layer.setOrbit();
         };
