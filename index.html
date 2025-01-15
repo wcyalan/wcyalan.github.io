@@ -208,36 +208,6 @@
                 y: 0.5
             });
 
-            const cardColor = document.querySelector('.card');
-            const cardColorFont = document.querySelector('.color');
-            const cardColorHex = document.querySelector('.color-hex');
-
-            layer.addEventListener('click', (evt) => {
-                chart
-                    .attr('scaleY', 1)
-                    .attr('y', 0);
-                cardColor.style.opacity = 1;
-
-                if (evt.target !== layer) {
-                    console.log(evt.target);
-                    console.log(evt.target.attributes);
-                    evt.target.attributes.y = 1 / 2;
-                    evt.target.attributes.scaleY = 2;
-                    console.log(evt.target.attributes);
-
-                    // evt.target.attributes.height = 1.5;
-                    let idx = evt.target.id;
-                    cardColor.style.background = colors[idx].hex;
-                    cardColorFont.textContent = colors[idx].name;
-                    cardColorHex.textContent = colors[idx].hex;
-                } else if (evt.target === layer) {
-                    cardColor.style.opacity = 0;
-                }
-            });
-
-            // 让元素支持点击事件
-            layer.setRaycast();
-
             //  text
             layer.append(title);
             layer.append(author);
