@@ -17,7 +17,7 @@
 
         body {
             min-height: 100%;
-            background-color: #F0EADC;
+            background-color: #FFFFFF;
             margin: 0;
             display: flex;
             flex-direction: column;
@@ -160,8 +160,8 @@
                 // .attr('height', 0)
                 // .attr('scaleY', 0.001)
                 .attr('pos', (d, i) => {
-                    const x = -2 + 0.5 * Math.floor(i / 27);
-                    const z = -5 + 0.5 * (i % 27);
+                    const x = -2 + 0.5 * Math.floor(i / 10);
+                    const z = -5 + 0.5 * (i % 10);
                     return [x, 0, z];
                 })
                 .attr('colors', d => d.hex);
