@@ -31,46 +31,6 @@
             height: 100vh;
         }
 
-        .card {
-            width: 60px;
-            height: 300px;
-            position: fixed;
-            right: 150px;
-            top: 20px;
-            border-radius: 40px;
-            font-family: 'FangZhengQingKeBenYueSong', Helvetica, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.1);
-            transition: all 0.2s;
-            opacity: 0;
-        }
-
-        .card::before {
-            content: '';
-            display: block;
-            width: 20px;
-            height: 20px;
-            background: white;
-            border-radius: 50%;
-            position: absolute;
-            left: 32%;
-            top: 20px;
-        }
-
-        .card::after {
-            content: '';
-            display: block;
-            width: 20px;
-            height: 20px;
-            background: white;
-            border-radius: 50%;
-            position: absolute;
-            left: 32%;
-            bottom: 20px;
-        }
-
         .color {
             font-size: 30px;
             font-weight: normal;
@@ -160,8 +120,9 @@
                 // .attr('scaleY', 0.001)
                 .attr('pos', (d, i) => {
                     const x = -2 + 0.5 * Math.floor(i / 15);
+                    const y = d.number / 20
                     const z = -5 + 0.5 * (i % 15);
-                    return [x, 0, z];
+                    return [x, y, z];
                 })
                 .attr('colors', d => d.hex);
 
