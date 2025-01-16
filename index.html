@@ -119,9 +119,9 @@
                 // .attr('height', 0)
                 // .attr('scaleY', 0.001)
                 .attr('pos', (d, i) => {
-                    const x = -2 + 0.5 * Math.floor(i / 8);
+                    const x = -2 + 0.5 * Math.floor(i / 10);
                     const y = d.number / 120 + 0.25
-                    const z = -5 + 0.5 * (i % 8);
+                    const z = -5 + 0.5 * (i % 10);
                     return [x, y, z];
                 })
                 .attr('colors', d => d.hex);
