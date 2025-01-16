@@ -144,7 +144,6 @@
             });
 
             const cubeWidth = 0.3;
-            const cubeHeight = 1;
             const selection = d3.select(layer);
             const chart = selection.selectAll('cube')
                 .data(colors)
@@ -154,7 +153,7 @@
                 .attr('id', (d, i) => i)
                 .attr('width', cubeWidth)
                 .attr('depth', cubeWidth)
-                .attr('height', cubeHeight)
+                .attr('height', d => d.number / 10)
                 // Note: use scaleY. DONT use height directly because the change of height
                 // will rebuild geometry(much slower).
                 // .attr('height', 0)
