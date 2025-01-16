@@ -113,14 +113,14 @@
                 .attr('id', (d, i) => i)
                 .attr('width', cubeWidth)
                 .attr('depth', cubeWidth)
-                .attr('height', d => d.number / 40)
+                .attr('height', d => d.number / 60 + 1)
                 // Note: use scaleY. DONT use height directly because the change of height
                 // will rebuild geometry(much slower).
                 // .attr('height', 0)
                 // .attr('scaleY', 0.001)
                 .attr('pos', (d, i) => {
                     const x = -2 + 0.5 * Math.floor(i / 15);
-                    const y = d.number / 80
+                    const y = d.number / 120 + 0.5
                     const z = -5 + 0.5 * (i % 15);
                     return [x, y, z];
                 })
