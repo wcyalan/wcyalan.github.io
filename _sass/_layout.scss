@@ -35,6 +35,7 @@ body.sticky-bottom-footer {
 .profile {
   img {
     width: 100%;
+    max-width: 200px; // 添加最大宽度限制，使照片变小
   }
 }
 
