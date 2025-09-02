@@ -1,81 +1,80 @@
 ---
 layout: page
-title: project 1
-description: with background image
-img: assets/img/12.jpg
+title: Project 0
+description: Becoming Friends with Your Camera
+img: assets/img/1_project/page.gif
 importance: 1
-category: work
-related_publications: true
+category: CS180
+related_publications: false
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+## Part 1: Selfie: The Wrong Way vs. The Right Way
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
+This section includes five selfies that demonstrate different approaches to self-portrait photography.  
 
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
+Each image showcases unique techniques and perspectives. I prefer the fifth one. But the first three are funny (suitable for emoticons).
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/1_project/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/1_project/2.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/1_project/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
-</div>
-<div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
 </div>
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/1_project/4.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/1_project/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
-    This image can also have a caption. It's like magic.
+    Part 1 showcases five key images that introduce the project concept. The first row displays three images showing the initial approach, while the second row presents two additional images highlighting the core methodology.
 </div>
 
-You can also put regular text between your rows of images, even citations {% cite einstein1950meaning %}.
-Say you wanted to write a bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, _bled_ for your project, and then... you reveal its glory in the next row of images.
+---
+
+## Part 2: Architectural Perspective Compression
+
+The first image showcases a close-up shot using a short focal length (wide-angle lens), which creates a sense of depth and exaggerates perspective, making nearby objects appear larger while distant elements seem further away.
+
+The second image employs a long focal length (telephoto lens) from a greater distance, compressing the perspective and bringing distant architectural elements closer together, creating a flatter, more compressed visual effect.
+
+These contrasting approaches illustrate how lens choice fundamentally transforms our perception of architectural space and scale. 
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/1_project/1_1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/1_project/1_2.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+    Part 2 demonstrates architectural perspective compression techniques through four key examples, showing how different camera angles and distances affect the perception of architectural elements.
+</div>
+
+
+
+---
+
+## Part 3: The Dolly Zoom
+
+The dolly zoom, also known as the "Vertigo effect" or "Hitchcock zoom," represents one of cinema's most powerful and disorienting visual techniques. This section showcases this advanced camera movement where the camera physically moves forward or backward while simultaneously zooming in the opposite direction. 
+
+I took five different photos of my laptop using this technique. The result is a surreal effect where the subject remains the same size while the background perspective dramatically shifts, creating an unsettling sense of spatial distortion. As the camera pulls back while zooming in, the background compresses from an open, spacious view to a tunnel-like, compressed environment. 
 
 <div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+    <div class="col-sm-8 col-lg-6 mt-3 mt-md-0">
+        {% include figure.liquid path="assets/img/1_project/dolly_zoom.gif" title="Dolly Zoom Effect Demonstration" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
+    The Dolly Zoom effect in action - a cinematic technique that creates a disorienting perspective shift by simultaneously moving the camera forward while zooming out (or vice versa), keeping the subject the same size while dramatically changing the background perspective.
 </div>
-
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
-
-{% raw %}
-
-```html
-<div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm-4 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-</div>
-```
-
-{% endraw %}
