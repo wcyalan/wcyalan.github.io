@@ -2,7 +2,7 @@
 layout: page
 title: "Project 1"
 description: "Images of the Russian Empire: Colorizing the Prokudin-Gorskii Photo Collection"
-img: assets/img/2_project/addition/emir.jpg
+img: assets/img/2_project/addition/emir_grad.jpg
 importance: 2
 category: CS180
 related_publications: false
@@ -51,21 +51,20 @@ Two approaches are available depending on file type:
        - **Better Performance on Challenging Images**: Particularly effective for images like Emir where channels have different brightness levels
        - **Enhanced Feature Detection**: Focuses on structural content rather than absolute pixel intensities
        - **Reduced Noise Sensitivity**: Edge-based matching is more robust to image noise and artifacts
-       <br>
 
        **Emir Alignment Method Comparison:**
 
 ---
        
-<div class="row justify-content-center">
-    <div class="col-md-4 mt-3 mt-md-0">
+<div class="row">
+    <div class="col-md-6 mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/2_project/addition/emir_ncc.jpg" title="NCC Alignment" class="img-fluid rounded z-depth-1" %}
         <div class="caption">
             <strong>NCC Alignment</strong><br>
             Standard cross-correlation
         </div>
     </div>
-    <div class="col-md-4 mt-3 mt-md-0">
+    <div class="col-md-6 mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/2_project/addition/emir_grad.jpg" title="Gradient Correlation" class="img-fluid rounded z-depth-1" %}
         <div class="caption">
             <strong>Gradient Correlation</strong><br>
@@ -242,15 +241,15 @@ Two approaches are available depending on file type:
 
 ---
 
-<div class="row justify-content-center">
-    <div class="col-md-4 mt-3 mt-md-0">
+<div class="row">
+    <div class="col-md-6 mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/2_project/addition/emir_uncropped.jpg" title="Before Cropping" class="img-fluid rounded z-depth-1" %}
         <div class="caption">
             <strong>Before Cropping</strong><br>
             With original borders
         </div>
     </div>
-    <div class="col-md-4 mt-3 mt-md-0">
+    <div class="col-md-6 mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/2_project/result/emir_g(23,49)_r(40,107).jpg" title="After Cropping" class="img-fluid rounded z-depth-1" %}
         <div class="caption">
             <strong>After Automatic Cropping</strong><br>
