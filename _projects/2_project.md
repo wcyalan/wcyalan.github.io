@@ -221,9 +221,9 @@ Two approaches are available depending on file type:
 
 **Results - White Balance:**
 
-**Lastochikino White Balance Comparison:**
+**White Balance Method Comparisons:**
 
----
+#### Lastochikino White Balance Results:
 
 <div class="row">
     <div class="col-md-3 mt-3 mt-md-0">
@@ -256,6 +256,72 @@ Two approaches are available depending on file type:
     </div>
 </div>
 
+#### Siren White Balance Results:
+
+<div class="row">
+    <div class="col-md-3 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/2_project/result/siren_g(-7,49)_r(-25,95).jpg" title="Original" class="img-fluid rounded z-depth-1" %}
+        <div class="caption">
+            <strong>Original</strong><br>
+            No white balance
+        </div>
+    </div>
+    <div class="col-md-3 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/2_project/addition/siren_gray_world.jpg" title="Gray World" class="img-fluid rounded z-depth-1" %}
+        <div class="caption">
+            <strong>Gray World</strong><br>
+            Average channel equalization
+        </div>
+    </div>
+    <div class="col-md-3 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/2_project/addition/siren_white_patch.jpg" title="White Patch" class="img-fluid rounded z-depth-1" %}
+        <div class="caption">
+            <strong>White Patch</strong><br>
+            Brightest pixel scaling
+        </div>
+    </div>
+    <div class="col-md-3 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/2_project/addition/siren_histogram.jpg" title="Histogram" class="img-fluid rounded z-depth-1" %}
+        <div class="caption">
+            <strong>Histogram</strong><br>
+            Percentile stretching (2-98%)
+        </div>
+    </div>
+</div>
+
+#### Church White Balance Results:
+
+<div class="row">
+    <div class="col-md-3 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/2_project/result/church_g(4,25)_r(-4,58).jpg" title="Original" class="img-fluid rounded z-depth-1" %}
+        <div class="caption">
+            <strong>Original</strong><br>
+            No white balance
+        </div>
+    </div>
+    <div class="col-md-3 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/2_project/addition/church_gray_world.jpg" title="Gray World" class="img-fluid rounded z-depth-1" %}
+        <div class="caption">
+            <strong>Gray World</strong><br>
+            Average channel equalization
+        </div>
+    </div>
+    <div class="col-md-3 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/2_project/addition/church_white_patch.jpg" title="White Patch" class="img-fluid rounded z-depth-1" %}
+        <div class="caption">
+            <strong>White Patch</strong><br>
+            Brightest pixel scaling
+        </div>
+    </div>
+    <div class="col-md-3 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/2_project/addition/church_histogram.jpg" title="Histogram" class="img-fluid rounded z-depth-1" %}
+        <div class="caption">
+            <strong>Histogram</strong><br>
+            Percentile stretching (2-98%)
+        </div>
+    </div>
+</div>
+
 ---
 
 ### 5. Output Generation
@@ -263,7 +329,7 @@ Two approaches are available depending on file type:
 * After alignment and optional enhancement, the channels are stacked into an `[H, W, 3]` color image.
 * Converted to `uint8` for saving.
 * Output file names include alignment shifts, e.g.:
-  `out_path/church_g(-4,2)_r(3,-1).jpg`
+  `out_path/church_g(4,25)_r(-4,58).jpg`
 * The program also displays the final aligned image.
 
 ---
