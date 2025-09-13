@@ -51,33 +51,36 @@ Two approaches are available depending on file type:
        - **Better Performance on Challenging Images**: Particularly effective for images like Emir where channels have different brightness levels
        - **Enhanced Feature Detection**: Focuses on structural content rather than absolute pixel intensities
        - **Reduced Noise Sensitivity**: Edge-based matching is more robust to image noise and artifacts
+       <br>
 
        **Emir Alignment Method Comparison:**
 
-       ---
+---
        
-       <div class="row justify-content-center">
-           <div class="col-md-4 mt-3 mt-md-0">
-               {% include figure.liquid loading="eager" path="assets/img/2_project/addition/emir_ncc.jpg" title="NCC Alignment" class="img-fluid rounded z-depth-1" %}
-               <div class="caption">
-                   <strong>NCC Alignment</strong><br>
-                   Standard cross-correlation
-               </div>
-           </div>
-           <div class="col-md-4 mt-3 mt-md-0">
-               {% include figure.liquid loading="eager" path="assets/img/2_project/addition/emir_grad.jpg" title="Gradient Correlation" class="img-fluid rounded z-depth-1" %}
-               <div class="caption">
-                   <strong>Gradient Correlation</strong><br>
-                   Edge-based alignment
-               </div>
-           </div>
-       </div>
+<div class="row justify-content-center">
+    <div class="col-md-4 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/2_project/addition/emir_ncc.jpg" title="NCC Alignment" class="img-fluid rounded z-depth-1" %}
+        <div class="caption">
+            <strong>NCC Alignment</strong><br>
+            Standard cross-correlation
+        </div>
+    </div>
+    <div class="col-md-4 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/2_project/addition/emir_grad.jpg" title="Gradient Correlation" class="img-fluid rounded z-depth-1" %}
+        <div class="caption">
+            <strong>Gradient Correlation</strong><br>
+            Edge-based alignment
+        </div>
+    </div>
+</div>
+
+---
 
    **Results - Single-Level Alignment:**
 
    **Visual Results:**
 
-   ---
+---
 
    <div class="row">
        <div class="col-md-4 mt-3 mt-md-0">
@@ -120,12 +123,12 @@ Two approaches are available depending on file type:
 
    **Visual Results:**
 
-   ---
+---
 
    <div class="row">
        <div class="col-sm-4 mt-3 mt-md-0">
            {% include figure.liquid loading="eager" path="assets/img/2_project/result/emir_g(23,49)_r(40,107).jpg" title="Emir" class="img-fluid rounded z-depth-1" %}
-           <div class="caption">
+            <div class="caption">
                <strong>Emir</strong><br>
                G offset: (23, 49)<br>
                R offset: (40, 107)
@@ -133,11 +136,11 @@ Two approaches are available depending on file type:
        </div>
        <div class="col-sm-4 mt-3 mt-md-0">
            {% include figure.liquid loading="eager" path="assets/img/2_project/result/harvesters_g(17,60)_r(13,123).jpg" title="Harvesters" class="img-fluid rounded z-depth-1" %}
-           <div class="caption">
+            <div class="caption">
                <strong>Harvesters</strong><br>
                G offset: (17, 60)<br>
                R offset: (13, 123)
-           </div>
+            </div>
        </div>
        <div class="col-sm-4 mt-3 mt-md-0">
            {% include figure.liquid loading="eager" path="assets/img/2_project/result/icon_g(17,42)_r(23,90).jpg" title="Icon" class="img-fluid rounded z-depth-1" %}
@@ -202,7 +205,7 @@ Two approaches are available depending on file type:
    </div>
    <div class="row justify-content-center">
        <div class="col-md-4 mt-3 mt-md-0">
-           {% include figure.liquid loading="eager" path="assets/img/2_project/result/three_generations_g(14,53)_r(10,111).jpg" title="Three Generations" class="img-fluid rounded z-depth-1" %}
+           {% include figure.liquid loading="eager" path="assets/img/2_project/result/three_generations_g(14,53)_r(10,111).jpg" title="Three Generations" class="img-fluid rounded z-depth-1" %}s
            <div class="caption">
                <strong>Three Generations</strong><br>
                G offset: (14, 53)<br>
