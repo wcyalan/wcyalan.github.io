@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Project 0
-description: Becoming Friends with Your Camera
+title: "Project 0"
+description: "Becoming Friends with Your Camera"
 img: assets/img/1_project/page.gif
 importance: 1
 category: CS180
