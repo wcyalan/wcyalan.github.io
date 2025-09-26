@@ -412,6 +412,11 @@ ninja.data = [{
           description: "Images of the Russian Empire: Colorizing the Prokudin-Gorskii Photo Collection",
           section: "Projects",handler: () => {
               window.location.href = "/projects/2_project/";
+            },},{id: "projects-project-2",
+          title: 'Project 2',
+          description: "Fun with Filters and Frequencies",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/3_project/";
             },},{
         id: 'social-email',
         title: 'email',
