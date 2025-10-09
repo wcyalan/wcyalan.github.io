@@ -417,6 +417,11 @@ ninja.data = [{
           description: "Fun with Filters and Frequencies",
           section: "Projects",handler: () => {
               window.location.href = "/projects/3_project/";
+            },},{id: "projects-project-3",
+          title: 'Project 3',
+          description: "Image Warping and Mosaicing",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/4_projeect/";
             },},{
         id: 'social-email',
         title: 'email',
