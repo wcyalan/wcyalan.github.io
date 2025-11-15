@@ -422,8 +422,8 @@ ninja.data = [{
           description: "Image Warping and Mosaicing",
           section: "Projects",handler: () => {
               window.location.href = "/projects/4_projeect/";
-            },},{id: "projects-project-5",
-          title: 'Project 5',
+            },},{id: "projects-project-4",
+          title: 'Project 4',
           description: "Neural Radiance Fields (NeRF)",
           section: "Projects",handler: () => {
               window.location.href = "/projects/5_project/";
