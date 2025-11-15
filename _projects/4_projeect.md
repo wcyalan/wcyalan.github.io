@@ -2,7 +2,7 @@
 layout: page
 title: "Project 3"
 description: "Image Warping and Mosaicing"
-img: assets/img/3_project/part2/2.4/irregular_blending.jpg
+img: assets/img/4_project/part1/result2/09_final_blended_result.jpg
 importance: 4
 category: CS180
 related_publications: false

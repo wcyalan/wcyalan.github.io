@@ -1,8 +1,8 @@
 ---
 layout: page
-title: "Project 5"
+title: "Project 4"
 description: "Neural Radiance Fields (NeRF)"
-img: assets/img/5_project/nerf_preview.jpg
+img: assets/img/5_project/part2/chips_rotated.gif
 importance: 5
 category: CS180
 related_publications: false
@@ -11,15 +11,6 @@ related_publications: false
 # Neural Radiance Fields (NeRF)
 
 This project implements a Neural Radiance Field (NeRF) to represent and render 3D scenes from multi-view 2D images. Starting with camera calibration and 2D neural fields, we progressively build up to full 3D volumetric rendering.
-
-## Project Overview
-
-Neural Radiance Fields represent 3D scenes as continuous volumetric functions that map 3D coordinates and viewing directions to color and density values. The key components include:
-
-- **Camera Calibration**: Recovering intrinsic and extrinsic camera parameters using ArUco markers
-- **2D Neural Fields**: Learning to represent images as continuous functions
-- **3D NeRF**: Volumetric rendering from multi-view images
-- **Custom Dataset**: Training NeRF on self-captured objects
 
 ---
 
@@ -144,25 +135,6 @@ Using the calibrated intrinsics, we estimate camera pose for each image using Pe
 
 Given 3D-2D correspondences and camera intrinsics, `cv2.solvePnP()` recovers the rotation and translation. The algorithm converts the axis-angle rotation vector to a rotation matrix using `cv2.Rodrigues()`, then constructs the camera-to-world transformation matrix by inverting the world-to-camera transformation.
 
-#### Camera Frustum Visualization
-
-<div class="row">
-    <div class="col-md-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5_project/part0/camera_frustums_view1.jpg" title="Camera Frustums 1" class="img-fluid rounded z-depth-1" %}
-        <div class="caption">
-            <strong>Camera Poses - View 1</strong><br>
-            Estimated camera frustums showing capture positions
-        </div>
-    </div>
-    <div class="col-md-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5_project/part0/camera_frustums_view2.jpg" title="Camera Frustums 2" class="img-fluid rounded z-depth-1" %}
-        <div class="caption">
-            <strong>Camera Poses - View 2</strong><br>
-            Multiple viewpoints around the object
-        </div>
-    </div>
-</div>
-
 ### 0.4: Image Undistortion and Dataset Creation
 
 Removed lens distortion using `cv2.undistort()` and packaged data for NeRF training. Used `cv2.getOptimalNewCameraMatrix()` to handle black boundaries from undistortion, cropping images to the valid region of interest and updating the principal point accordingly. The final dataset is saved in `.npz` format containing training/validation images, camera poses, and focal length.
@@ -194,7 +166,6 @@ where \(L\) is the maximum frequency level.
         {% include figure.liquid loading="eager" path="assets/img/5_project/part1/mlp_img.jpg" title="2D MLP Architecture" class="img-fluid rounded z-depth-1" %}
         <div class="caption">
             <strong>2D Neural Field MLP Architecture</strong><br>
-            Input (x, y) → PE(42-dim) → FC(256) → ReLU → FC(256) → ReLU → FC(256) → ReLU → FC(3) → Sigmoid → RGB
         </div>
     </div>
 </div>
@@ -270,6 +241,50 @@ $$
     </div>
 </div>
 
+**Training Results on Another Image (Dog):**
+
+<div class="row">
+    <div class="col-md-3 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/5_project/part1/dog/dog.jpeg" title="Ground Truth Dog" class="img-fluid rounded z-depth-1" %}
+        <div class="caption">
+            <strong>Ground Truth</strong>
+        </div>
+    </div>
+    <div class="col-md-3 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/5_project/part1/dog/neural_image_iter_50.png" title="Dog Iteration 50" class="img-fluid rounded z-depth-1" %}
+        <div class="caption">
+            <strong>Iteration 50</strong>
+        </div>
+    </div>
+    <div class="col-md-3 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/5_project/part1/dog/neural_image_iter_100.png" title="Dog Iteration 100" class="img-fluid rounded z-depth-1" %}
+        <div class="caption">
+            <strong>Iteration 100</strong>
+        </div>
+    </div>
+    <div class="col-md-3 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/5_project/part1/dog/neural_image_iter_500.png" title="Dog Iteration 500" class="img-fluid rounded z-depth-1" %}
+        <div class="caption">
+            <strong>Iteration 500</strong>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/5_project/part1/dog/neural_image_iter_1000.png" title="Dog Iteration 1000" class="img-fluid rounded z-depth-1" %}
+        <div class="caption">
+            <strong>Iteration 1000</strong>
+        </div>
+    </div>
+    <div class="col-md-3 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/5_project/part1/dog/neural_image_iter_3000.png" title="Dog Iteration 3000" class="img-fluid rounded z-depth-1" %}
+        <div class="caption">
+            <strong>Iteration 3000</strong>
+        </div>
+    </div>
+</div>
+
 ### 1.4: Hyperparameter Analysis
 
 **Effect of Positional Encoding Frequency (L):**
@@ -334,8 +349,9 @@ $$
 **Ray Generation:**
 
 For each pixel, we compute:
-- **Ray Origin**: \(\mathbf{o} = \mathbf{t}\) (camera position in world space)
-- **Ray Direction**: \(\mathbf{d} = \frac{R \cdot K^{-1} [u, v, 1]^T}{\|R \cdot K^{-1} [u, v, 1]^T\|}\)
+
+- **Ray Origin**: \\(\mathbf{o} = \mathbf{t}\\) (camera position in world space)
+- **Ray Direction**: \\(\mathbf{d} = \frac{R \cdot K^{-1} [u, v, 1]^T}{\|R \cdot K^{-1} [u, v, 1]^T\|}\\)
 
 The implementation adds 0.5 to pixel coordinates to account for pixel centers, transforms from pixel to camera coordinates using the inverse intrinsic matrix, then to world coordinates using the camera-to-world transformation.
 
@@ -357,7 +373,7 @@ Stratified sampling with random perturbation during training ensures every locat
 
 <div class="row">
     <div class="col-md-12 mt-3">
-        {% include figure.liquid loading="eager" path="assets/img/5_project/part2/rays_cameras.jpg" title="Rays and Cameras" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/5_project/part2/render1.png" title="Rays and Cameras" class="img-fluid rounded z-depth-1" %}
         <div class="caption">
             <strong>Camera Frustums with Sampled Rays</strong><br>
             100 rays sampled from training cameras
@@ -392,9 +408,6 @@ Stratified sampling with random perturbation during training ensures every locat
         {% include figure.liquid loading="eager" path="assets/img/5_project/part2/mlp_nerf.png" title="NeRF MLP Architecture" class="img-fluid rounded z-depth-1" %}
         <div class="caption">
             <strong>NeRF Network Architecture</strong><br>
-            Position PE(63-dim) → FC(256) → ReLU → FC(256) → ReLU → [Concat Position PE] → 
-            FC(256) → ReLU → FC(256) → ReLU → FC(256+1) → Density (1) + Feature (256) → 
-            [Concat Direction PE(27-dim)] → FC(128) → ReLU → FC(3) → Sigmoid → RGB
         </div>
     </div>
 </div>
@@ -418,13 +431,14 @@ $$
 $$
 
 where:
-- \(T_i = \exp\left(-\sum_{j=1}^{i-1} \sigma_j \delta_j\right)\) is the accumulated transmittance
-- \(\delta_i = t_{i+1} - t_i\) is the distance between samples
-- \(\alpha_i = 1 - \exp(-\sigma_i \delta_i)\) is the opacity
+
+- \\(T_i = \exp\left(-\sum_{j=1}^{i-1} \sigma_j \delta_j\right)\\) is the accumulated transmittance
+- \\(\delta_i = t_{i+1} - t_i\\) is the distance between samples
+- \\(\alpha_i = 1 - \exp(-\sigma_i \delta_i)\\) is the opacity
 
 The implementation computes opacity from density, calculates accumulated transmittance using cumulative product, and performs weighted sum of colors to produce the final rendered pixel color.
 
-### 2.6: Training Results on Lego Dataset
+### 2.5: Training Results on Lego Dataset
 
 **Training Configuration:**
 - Dataset: Lego (200×200 resolution, 100 training views)
@@ -435,38 +449,55 @@ The implementation computes opacity from density, calculates accumulated transmi
 - Samples per Ray: 64
 
 <div class="row">
-    <div class="col-md-3 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5_project/part2/lego_iter_0100.jpg" title="Lego 100" class="img-fluid rounded z-depth-1" %}
+    <div class="col-md-4 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/5_project/part2/lego_ground_truth.png" title="Ground Truth" class="img-fluid rounded z-depth-1" %}
+        <div class="caption">
+            <strong>Ground Truth</strong>
+        </div>
+    </div>
+    <div class="col-md-4 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/5_project/part2/lego_iter_50.png" title="Iteration 50" class="img-fluid rounded z-depth-1" %}
+        <div class="caption">
+            <strong>Iteration 50</strong>
+        </div>
+    </div>
+    <div class="col-md-4 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/5_project/part2/lego_iter_100.png" title="Iteration 100" class="img-fluid rounded z-depth-1" %}
         <div class="caption">
             <strong>Iteration 100</strong>
         </div>
     </div>
-    <div class="col-md-3 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5_project/part2/lego_iter_0500.jpg" title="Lego 500" class="img-fluid rounded z-depth-1" %}
+</div>
+
+<div class="row">
+    <div class="col-md-4 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/5_project/part2/lego_iter_500.png" title="Iteration 500" class="img-fluid rounded z-depth-1" %}
         <div class="caption">
             <strong>Iteration 500</strong>
         </div>
     </div>
-    <div class="col-md-3 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5_project/part2/lego_iter_1000.jpg" title="Lego 1000" class="img-fluid rounded z-depth-1" %}
+    <div class="col-md-4 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/5_project/part2/lego_iter_1000.png" title="Iteration 1000" class="img-fluid rounded z-depth-1" %}
         <div class="caption">
             <strong>Iteration 1000</strong>
         </div>
     </div>
-    <div class="col-md-3 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5_project/part2/lego_iter_5000.jpg" title="Lego 5000" class="img-fluid rounded z-depth-1" %}
+    <div class="col-md-4 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/5_project/part2/lego_iter_2000.png" title="Iteration 2000" class="img-fluid rounded z-depth-1" %}
         <div class="caption">
-            <strong>Iteration 5000</strong>
+            <strong>Iteration 2000</strong>
         </div>
     </div>
 </div>
 
-<div class="row mt-3">
+### Training Loss Curve
+
+<div class="row">
     <div class="col-md-12">
-        {% include figure.liquid loading="eager" path="assets/img/5_project/part2/lego_psnr_curve.jpg" title="Lego PSNR" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/5_project/part2/lego_curves.png" title="Custom Loss" class="img-fluid rounded z-depth-1" %}
         <div class="caption">
-            <strong>Validation PSNR Curve</strong><br>
-            Achieved >23 PSNR on validation set after 1000 iterations
+            <strong>Training Loss Over Iterations</strong><br>
+            Steady convergence with adjusted hyperparameters
         </div>
     </div>
 </div>
@@ -475,7 +506,9 @@ The implementation computes opacity from density, calculates accumulated transmi
 
 <div class="row">
     <div class="col-md-12 mt-3">
-        {% include figure.liquid loading="eager" path="assets/img/5_project/part2/lego_novel_views.gif" title="Lego Novel Views" class="img-fluid rounded z-depth-1" %}
+        <div style="transform: rotate(-90deg) scale(2); transform-origin: center; width: 100%; height: 600px; display: flex; justify-content: center; align-items: center; overflow: hidden;">
+            {% include figure.liquid loading="eager" path="assets/img/5_project/part2/lego1.gif" title="Lego Novel Views" class="img-fluid rounded z-depth-1" %}
+        </div>
         <div class="caption">
             <strong>Novel View Rendering</strong><br>
             Spherical camera trajectory around the lego bulldozer
@@ -504,28 +537,32 @@ Trained NeRF on a custom object captured using the calibration pipeline from Par
 - Resized images to manage training time
 - Updated intrinsics matrix after resizing
 
-### Training Progression
+<div class="row">
+    <div class="col-md-6 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/5_project/part2/nerf_render_iter_1000.png" title="Iteration 1000" class="img-fluid rounded z-depth-1" %}
+        <div class="caption">
+            <strong>Iteration 1000</strong>
+        </div>
+    </div>
+    <div class="col-md-6 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/5_project/part2/nerf_render_iter_5000.png" title="Iteration 5000" class="img-fluid rounded z-depth-1" %}
+        <div class="caption">
+            <strong>Iteration 5000</strong>
+        </div>
+    </div>
+</div>
 
 <div class="row">
-    <div class="col-md-4 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5_project/part2/custom_iter_0500.jpg" title="Custom 500" class="img-fluid rounded z-depth-1" %}
+    <div class="col-md-6 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/5_project/part2/nerf_render_iter_10000.png" title="Iteration 10000" class="img-fluid rounded z-depth-1" %}
         <div class="caption">
-            <strong>Iteration 500</strong><br>
-            Basic shape emerging
+            <strong>Iteration 10000</strong>
         </div>
     </div>
-    <div class="col-md-4 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5_project/part2/custom_iter_2000.jpg" title="Custom 2000" class="img-fluid rounded z-depth-1" %}
+    <div class="col-md-6 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/5_project/part2/nerf_render_iter_20000.png" title="Iteration 20000" class="img-fluid rounded z-depth-1" %}
         <div class="caption">
-            <strong>Iteration 2000</strong><br>
-            Details becoming clearer
-        </div>
-    </div>
-    <div class="col-md-4 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5_project/part2/custom_iter_6000.jpg" title="Custom 6000" class="img-fluid rounded z-depth-1" %}
-        <div class="caption">
-            <strong>Iteration 6000</strong><br>
-            High-quality reconstruction
+            <strong>Iteration 20000</strong>
         </div>
     </div>
 </div>
@@ -545,10 +582,8 @@ Trained NeRF on a custom object captured using the calibration pipeline from Par
 ### Novel View Synthesis
 
 <div class="row">
-    <div class="col-md-12 mt-3">
-        <div style="transform: rotate(-90deg); transform-origin: center; width: 100%; display: flex; justify-content: center; align-items: center; min-height: 600px;">
-            {% include figure.liquid loading="eager" path="assets/img/5_project/part2/chips.gif" title="Custom Novel Views" class="img-fluid rounded z-depth-1" %}
-        </div>
+    <div class="col-md-6 offset-md-3 mt-3">
+        {% include figure.liquid loading="eager" path="assets/img/5_project/part2/chips_rotated.gif" title="Custom Novel Views" class="img-fluid rounded z-depth-1" %}
         <div class="caption">
             <strong>360° Novel View Rendering</strong><br>
             Camera circling around the captured object
